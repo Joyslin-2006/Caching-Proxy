@@ -48,6 +48,7 @@ public class RedisCacheHttpProxy implements HttpProxy {
     private void putIntoCache(String url, HttpResponse<byte[]> response){
         cache.opsForValue().set(url, new MaterialHttpResponse(response), Duration.ofSeconds(cacheDurationSeconds));
     }
+    
     @Override
     public void clear() {
         cache.getConnectionFactory()
